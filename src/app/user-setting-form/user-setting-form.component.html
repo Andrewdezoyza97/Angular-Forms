@@ -1,0 +1,70 @@
+<div class="container">
+    <h2>User Settings</h2>
+    <form #form = "ngForm"(ngSubmit)="onSubmit(form)">
+        <!-- NAME INPUT -->
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input id="name" name="name" class="form-control"[(ngModel)]="userSettings.name"
+           required #nameField = "ngModel"
+           [class.field-error] = "form.submitted && nameField.invalid"/>
+           <div [hidden]="!form.submitted|| nameField.valid"
+           class="alert alert-danger"> Enter the Name</div>
+        </div>
+
+        <!-- Agree Button -->
+        <div class="form-check form-group">
+            <input class="form-check-input" type="checkbox" id="emailoffers" name="emailoffers" [(ngModel)]="userSettings. emailOffers">
+            <label class="form-check-lable" for="emailOffer">
+                Email Special Offers
+            </label>
+        </div>
+
+        <!-- radio Buttons -->
+        <p>User Interface Style</p>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="interfaceStyle"
+              id=" lightInterface" value="light" [(ngModel)]="userSettings.interfaceStyle">
+            <label class="form-check-label" for="lightInterface">
+                Light
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="interfaceStyle"
+             value="medium" id="MediumInterface" checked [(ngModel)]="userSettings.interfaceStyle">
+            <label class="form-check-label" for="MediumInterface">
+                Medium
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="interfaceStyle"
+             value="dark"  id="DarkInterface" checked [(ngModel)]="userSettings.interfaceStyle">
+            <label class="form-check-label" for="DarkInterface">
+                Drak
+            </label>
+        </div>
+
+        <!-- SELECT BUTTON -->
+
+        <div class="form-group">
+            <label for="subscriptionType">Subscription Type</label>
+            <select class="form-select" id="subscriptionType" name="subscriptionType" [(ngModel)]="userSettings.subscriptionType">
+                <option>Monthly</option>
+                <option>Annual</option>
+                <option>Lifetime</option>
+            </select>
+        </div>
+
+        <!-- Note Area -->
+        <div class="form-group">
+            <label for="notes">Notes</label>
+            <textarea id="notes" name="notes" class="form-control" rows="3" [(ngModel)]="userSettings.notes"> </textarea>
+        </div>
+
+    
+        <!-- SEND BUTTON -->
+        <br>
+        <button class="btn btn-primary">Send</button>
+    </form>
+</div>
+
+<h1>{{ originalUserSettings | json}}</h1>
