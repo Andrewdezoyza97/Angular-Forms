@@ -1,9 +1,9 @@
 export interface UserSettings{
 
-    name : string;
-    emailOffers : boolean;
-    interfaceStyle : string;
-    subscriptionType: string;
-    notes: string;
+    name : null;
+    emailOffers :null;
+    interfaceStyle : null;
+    subscriptionType: null;
+    notes: null;
     
 }
